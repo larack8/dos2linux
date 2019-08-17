@@ -18,13 +18,13 @@ linux2dos.bat {dirname|filename}
 dos2linux.sh {dirname|filename}
 ```
 
-3. All System 
+3. All Operate System 
 
 ```bash
-python dos2linux.py {linux2dos|dos2linux} {dirname|filename}
+python convert.py {linux2dos|dos2linux} {dirname|filename}
 ```
 
-# About Us
+# About Me
 
 > larack@126.com
 
