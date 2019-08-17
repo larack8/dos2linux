@@ -12,11 +12,13 @@ except:
 
 def usage():
     print('Usage:')
-    print('\t  %s' % ('** python dos2linux.py {unix2dos|dos2unix} {dirname|filename}'))
+    print('\t  %s' %
+          (' python dos2linux.py {linux2dos|dos2linux} {dirname|filename}'))
 
 
 def err_exit(msg):
-    if msg: print('%s' % msg)
+    if msg:
+        print('%s' % msg)
     usage()
     sys.exit(0)
 
@@ -28,7 +30,6 @@ def getfiles(root):
 
 
 def delete_file(file):
-    # 判断文件是否存在
     if (os.path.exists(file)):
         os.remove(file)
         print('>>> delete %s ' % file)
@@ -36,17 +37,20 @@ def delete_file(file):
         print(' !!! %s ' % file + ' not exists!')
 
 
-def format_file(file, toformat='dos2unix'):
+def format_file(file, toformat='dos2linux'):
     print('>>> %s formatting: %s' % (toformat, file))
     if not os.path.isfile(file):
         print('ERROR: %s invalid normal file' % file)
         return
-    if toformat == 'unix2dos':
+    if toformat == 'linux2dos':
         line_sep = '\r\n'
     else:
         line_sep = '\n'
 
-    tempfilename = file + '-' + toformat + '.txt'
+    fpath, fname = os.path.split(file)
+    shotname, extension = os.path.splitext(fname)
+    tempfilename = fpath + os.path.sep + toformat + '-' + fname
+    # print('>>> fpath: ' + fpath+", shotname: "+shotname+", extension: "+extension)
     with open(file, 'r') as fd:
         tmpfile = open(tempfilename, 'w+b')
         for line in fd:
@@ -55,13 +59,14 @@ def format_file(file, toformat='dos2unix'):
             str = line + line_sep
             tmpfile.write(str.encode())
         tmpfile.close()
-    delete_file(file)
-    print('>>> rename ' + tempfilename + ' ->  %s ' % file)
-    os.rename(tempfilename, file)
+    print('>>> convert file: ' + tempfilename)
+    # delete_file(file)
+    # print('>>> rename ' + tempfilename + ' ->  %s ' % file)
+    # os.rename(tempfilename, file)
 
 
 def uni_format_proc(filename, toformat):
-    if not toformat or toformat not in ['unix2dos', 'dos2unix']:
+    if not toformat or toformat not in ['linux2dos', 'dos2linux']:
         err_exit('ERROR: %s: Invalid format param' % (toformat))
     if not filename or not os.path.exists(filename):
         err_exit('ERROR: %s: No such file or directory' % (filename))

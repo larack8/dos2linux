@@ -1,8 +1,8 @@
 # dos2linux
 
-> convert linux format to dos format; 
+> Convert dos format to linux format, result file is dos2linux-originfile.
 
-> convert dos format to linux format. 
+> Convert linux format to dos format, result file is linux2dos-originfile.
 
 # Usage 
 
@@ -21,7 +21,7 @@ dos2linux.sh {dirname|filename}
 3. All System 
 
 ```bash
-python dos2linux.py {unix2dos|dos2unix} {dirname|filename}
+python dos2linux.py {linux2dos|dos2linux} {dirname|filename}
 ```
 
 # About Us
