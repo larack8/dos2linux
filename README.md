@@ -1,8 +1,8 @@
 # dos2linux
 
-> Convert dos format to linux format, result file is dos2linux-originfile.
+> Convert dos format to linux format, result file is dos2linux-originalfile.
 
-> Convert linux format to dos format, result file is linux2dos-originfile.
+> Convert linux format to dos format, result file is linux2dos-originalfile.
 
 # Usage 
 
